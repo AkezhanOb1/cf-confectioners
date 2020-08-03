@@ -1,0 +1,81 @@
+syntax="proto3";
+
+package confectioner;
+option go_package = ".;confectioner";
+
+import "google/protobuf/empty.proto";
+
+
+message ConfectionerProfileImage {
+    int64 image_id = 1;
+    string image_path = 2;
+}
+
+message Confectioner {
+    int64 id = 1;
+    string first_name = 2;
+    string second_name = 3;
+    int32 age = 4;
+    string introduction = 5;
+    string phone_number = 6;
+    string email = 7;
+    string instagram_link = 8;
+    repeated ConfectionerProfileImage profile_photo = 9;
+}
+
+message CreateConfectionerRequest {
+    string first_name = 1;
+    string second_name = 2;
+    int32 age = 3;
+    string introduction = 4;
+    string phone_number = 5;
+    string email = 6;
+    string instagram_link = 7;
+}
+
+message CreateConfectionerResponse {
+    int64 id = 1;
+}
+
+message UpdateConfectionerRequest {
+    int64 id = 1;
+    string first_name = 2;
+    string second_name = 3;
+    int32 age = 4;
+    string introduction = 5;
+    string phone_number = 6;
+    string email = 7;
+    string instagram_link = 8;
+}
+
+message UpdateConfectionerResponse {
+    bool updated = 1;
+}
+
+message DeleteConfectionerRequest {
+    int64 id = 1;
+}
+
+message DeleteConfectionerResponse {
+    bool deleted = 1;
+}
+
+message GetConfectionerByIdRequest {
+    int64 id = 1;
+}
+
+message GetConfectionerByIdResponse {
+    Confectioner confectioner = 1;
+}
+
+message GetConfectionersResponse {
+    repeated Confectioner confectioners = 1;
+}
+
+service ConfectionerService {
+    rpc GetConfectionerById (GetConfectionerByIdRequest) returns (GetConfectionerByIdResponse) {}
+    rpc GetConfectioners (google.protobuf.Empty) returns (GetConfectionersResponse) {}
+    rpc CreateConfectioner (CreateConfectionerRequest) returns (CreateConfectionerResponse) {}
+    rpc UpdateConfectioner (UpdateConfectionerRequest) returns (UpdateConfectionerResponse) {}
+    rpc DeleteConfectioner (DeleteConfectionerRequest) returns (DeleteConfectionerResponse) {}
+}
