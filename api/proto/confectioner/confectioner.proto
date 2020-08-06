@@ -20,7 +20,9 @@ message Confectioner {
     string phone_number = 6;
     string email = 7;
     string instagram_link = 8;
-    repeated ConfectionerProfileImage profile_photo = 9;
+    string password = 9;
+    int64 town_id = 10;
+    repeated ConfectionerProfileImage profile_photo = 11;
 }
 
 message CreateConfectionerRequest {
@@ -31,10 +33,12 @@ message CreateConfectionerRequest {
     string phone_number = 5;
     string email = 6;
     string instagram_link = 7;
+    string password = 8;
+    int64 town_id = 9;
 }
 
 message CreateConfectionerResponse {
-    int64 id = 1;
+    int64 confectioner_id = 1;
 }
 
 message UpdateConfectionerRequest {
@@ -46,6 +50,7 @@ message UpdateConfectionerRequest {
     string phone_number = 6;
     string email = 7;
     string instagram_link = 8;
+    int64 town_id = 10;
 }
 
 message UpdateConfectionerResponse {
@@ -53,7 +58,7 @@ message UpdateConfectionerResponse {
 }
 
 message DeleteConfectionerRequest {
-    int64 id = 1;
+    int64 confectioner_id = 1;
 }
 
 message DeleteConfectionerResponse {
@@ -61,7 +66,7 @@ message DeleteConfectionerResponse {
 }
 
 message GetConfectionerByIdRequest {
-    int64 id = 1;
+    int64 confectioner_id = 1;
 }
 
 message GetConfectionerByIdResponse {

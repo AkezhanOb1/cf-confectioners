@@ -5,7 +5,6 @@ import (
 	pb "github.com/AkezhanOb1/cf-confectioner/api/proto/confectioner"
 	"github.com/AkezhanOb1/cf-confectioner/config"
 	"github.com/jackc/pgx/v4"
-
 )
 //GetConfectionerByIdRepository is a
 func GetConfectionerByIdRepository(ctx context.Context, request *pb.GetConfectionerByIdRequest) (*pb.GetConfectionerByIdResponse, error) {
@@ -16,9 +15,9 @@ func GetConfectionerByIdRepository(ctx context.Context, request *pb.GetConfectio
 
 	defer conn.Close(ctx)
 	sqlQuery := `SELECT id, first_name, second_name, introduction, age, phone_number, 
-	email, instagram_link FROM confectioner WHERE id=$1;`
+	email, instagram_link, town_id FROM confectioner WHERE id=$1;`
 
-	row := conn.QueryRow(ctx, sqlQuery, request.GetId())
+	row := conn.QueryRow(ctx, sqlQuery, request.GetConfectionerId())
 
 	var confectioner pb.Confectioner
 
@@ -31,6 +30,7 @@ func GetConfectionerByIdRepository(ctx context.Context, request *pb.GetConfectio
 		&confectioner.PhoneNumber,
 		&confectioner.Email,
 		&confectioner.InstagramLink,
+		&confectioner.TownId,
 	)
 
 	if err != nil {
