@@ -16,5 +16,6 @@ func (s *Server) GetConfectioners (ctx context.Context, empty *empty.Empty) (*pb
 		return nil, err
 	}
 
+
 	return confectioners, nil
 }

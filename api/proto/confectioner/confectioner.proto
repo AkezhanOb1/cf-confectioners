@@ -7,7 +7,7 @@ import "google/protobuf/empty.proto";
 
 
 message ConfectionerProfileImage {
-    int64 image_id = 1;
+    string image_id = 1;
     string image_path = 2;
 }
 
