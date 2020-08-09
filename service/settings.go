@@ -1,3 +1,3 @@
 package service
 
-type Server struct{}
+type ConfectionerServer struct{}

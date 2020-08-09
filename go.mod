@@ -1,4 +1,4 @@
-module github.com/AkezhanOb1/cf-confectioner
+module github.com/AkezhanOb1/cf-confectioners
 
 go 1.13
 

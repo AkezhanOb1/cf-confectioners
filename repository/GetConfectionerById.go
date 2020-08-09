@@ -2,8 +2,8 @@ package repository
 
 import (
 	"context"
-	pb "github.com/AkezhanOb1/cf-confectioner/api/proto/confectioner"
-	"github.com/AkezhanOb1/cf-confectioner/config"
+	pb "github.com/AkezhanOb1/cf-confectioners/api/proto/confectioner"
+	"github.com/AkezhanOb1/cf-confectioners/config"
 	"github.com/jackc/pgtype"
 	"github.com/jackc/pgx/v4"
 )

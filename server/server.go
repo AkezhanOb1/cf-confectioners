@@ -1,13 +1,12 @@
 package main
 
 import (
-	pb "github.com/AkezhanOb1/cf-confectioner/api/proto/confectioner"
-	"github.com/AkezhanOb1/cf-confectioner/config"
+	pb "github.com/AkezhanOb1/cf-confectioners/api/proto/confectioner"
+	"github.com/AkezhanOb1/cf-confectioners/config"
+	"github.com/AkezhanOb1/cf-confectioners/service"
 	"google.golang.org/grpc"
 	"log"
 	"net"
-
-	"github.com/AkezhanOb1/cf-confectioner/service"
 )
 
 func main() {
@@ -18,7 +17,7 @@ func main() {
 	log.Printf("Server is listening on %v ...", config.ServerAddress)
 
 	s := grpc.NewServer()
-	pb.RegisterConfectionerServiceServer(s, &service.Server{})
+	pb.RegisterConfectionerServiceServer(s, &service.ConfectionerServer{})
 	err = s.Serve(lis)
 	if err != nil {
 		panic(err)
