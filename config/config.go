@@ -25,5 +25,13 @@ var PostgresConnection = fmt.Sprintf("host=%s port=%s user=%s password=%s dbname
 //ServerAddress is
 var ServerAddress = "localhost:50055"
 
+//rabbitUserName is the name of the user in Rabbit MQ
+const rabbitUserName = "guest"
+//rabbitPassword is the password of the user
+const rabbitPassword = "guest"
+//RabbitConnection is the connection string to the Rabbit MQ
+var RabbitConnection = fmt.Sprintf("amqp://%s:%s@127.0.0.1:5672/", rabbitUserName, rabbitPassword)
+//ConfectionerGreetingQueue is a
+var ConfectionerGreetingQueue = "confectioner-greeting"
 //TokenServer is 46.101.138.224
 //var TokenServer = "46.101.138.224:50052"

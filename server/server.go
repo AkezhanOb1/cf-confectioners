@@ -3,6 +3,7 @@ package main
 import (
 	pb "github.com/AkezhanOb1/cf-confectioners/api/proto/confectioner"
 	"github.com/AkezhanOb1/cf-confectioners/config"
+	"github.com/AkezhanOb1/cf-confectioners/mq"
 	"github.com/AkezhanOb1/cf-confectioners/service"
 	"google.golang.org/grpc"
 	"log"
@@ -10,6 +11,8 @@ import (
 )
 
 func main() {
+	defer mq.Channel.Close()
+
 	lis, err := net.Listen("tcp", config.ServerAddress)
 	if err != nil {
 		log.Fatalf("Error %v", err)
