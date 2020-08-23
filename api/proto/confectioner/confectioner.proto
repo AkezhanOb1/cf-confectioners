@@ -3,7 +3,6 @@ syntax="proto3";
 package confectioner;
 option go_package = ".;confectioner";
 
-import "google/protobuf/empty.proto";
 
 
 message ConfectionerProfileImage {
@@ -77,9 +76,13 @@ message GetConfectionersResponse {
     repeated Confectioner confectioners = 1;
 }
 
+message Empty {
+
+}
+
 service ConfectionerService {
     rpc GetConfectionerById (GetConfectionerByIdRequest) returns (GetConfectionerByIdResponse) {}
-    rpc GetConfectioners (google.protobuf.Empty) returns (GetConfectionersResponse) {}
+    rpc GetConfectioners (Empty) returns (GetConfectionersResponse) {}
     rpc CreateConfectioner (CreateConfectionerRequest) returns (CreateConfectionerResponse) {}
     rpc UpdateConfectioner (UpdateConfectionerRequest) returns (UpdateConfectionerResponse) {}
     rpc DeleteConfectioner (DeleteConfectionerRequest) returns (DeleteConfectionerResponse) {}
